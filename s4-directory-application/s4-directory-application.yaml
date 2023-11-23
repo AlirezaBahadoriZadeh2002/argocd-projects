@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: s4-directory-application
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+          #    directory:
+          #      exclude: "namespace.yaml"
+    path: s4-directory-application/directory-prg
+    repoURL: 'https://github.com/AlirezaBahadoriZadeh2002/argocd-projects.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
