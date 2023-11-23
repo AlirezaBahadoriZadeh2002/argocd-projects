@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-project
+  #  namespace: config-map
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+      - name: nginx-configuration
+        configMap:
+          name: nginx-config
+          items:
+          - key: nginx.conf
+            path: nginx.conf
+      containers:
+      - name: nginx-container
+        image: nginx:mainline-alpine3.18-slim
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: "/etc/nginx/"
+          name: nginx-configuration
