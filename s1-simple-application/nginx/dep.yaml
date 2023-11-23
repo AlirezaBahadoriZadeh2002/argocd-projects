@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-project
-  namespace: config-map
+  namespace: argocd
 spec:
   replicas: 5
   selector:
