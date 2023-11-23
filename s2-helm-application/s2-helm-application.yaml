@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: s2-helm-application
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: s2-helm-application/helm/nginx
+    repoURL: 'https://github.com/AlirezaBahadoriZadeh2002/argocd-projects.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
